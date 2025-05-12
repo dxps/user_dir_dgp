@@ -29,3 +29,6 @@ go.work.sum
 
 # Project binary
 user_dir_dgp
+
+# Tailwind CLI dependencies.
+node_modules

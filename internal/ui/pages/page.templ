@@ -1,7 +1,9 @@
-package ui
+package pages
+
+import "github.com/dxps/user_dir_dgp/internal/ui/comps"
 
 templ Page(title string) {
-	@layout() {
+	@comps.Layout() {
 		<h1>User Directory</h1>
 		<h3>{ title }</h3>
 		<div class="container"></div>
