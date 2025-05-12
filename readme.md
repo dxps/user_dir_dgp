@@ -4,11 +4,13 @@ A user directory implementation using [datastar](https://data-star.dev) + [golan
 
 <br/>
 
-## Setup
+## Prerequisites & Setup
 
+0. Install Go using [golang.org/dl/](https://golang.org/dl/)
 1. Tailwind CSS
     - Install its CLI using `npm install tailwindcss @tailwindcss/cli`
-2.
+2. Templ
+    - Install [templ](https://templ.guide/) using `go install github.com/a-h/templ/cmd/templ@latest`
 
 <br/>
 
