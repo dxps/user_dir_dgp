@@ -11,6 +11,8 @@ import (
 
 	"github.com/alexedwards/scs/v2"
 	"github.com/dxps/user_dir_dgp/internal/handlers"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 // Config defines the configuration of the application.
@@ -80,16 +82,17 @@ func (app *App) parseStringDuration(d string) time.Duration {
 
 func (app *App) router() http.Handler {
 
-	mux := http.NewServeMux()
+	hh := handlers.HttpHandlers{}
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
 
 	assetsHandler := http.FileServerFS(app.assetsFS)
-	mux.Handle("GET /assets/", assetsHandler)
+	r.Get("/assets/*", assetsHandler.ServeHTTP)
 
-	hh := handlers.HttpHandlers{}
-	mux.HandleFunc("GET /{$}", hh.HomePageHandler)
-	mux.HandleFunc("GET /login", hh.LoginPageHandler)
+	r.Get("/", hh.HomePageHandler)
+	r.Get("/login", hh.LoginPageHandler)
 
-	return app.sessionMgr.LoadAndSave(mux)
+	return app.sessionMgr.LoadAndSave(r)
 }
 
 func (app *App) StartHttpServer() {
