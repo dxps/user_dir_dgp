@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/dxps/user_dir_dgp/internal/appconfig"
+	"github.com/dxps/user_dir_dgp/internal"
 )
 
 //go:embed assets
@@ -28,6 +28,6 @@ func init() {
 
 func main() {
 
-	app := appconfig.InitApp(assetsFS)
+	app := internal.InitApp(assetsFS)
 	app.StartHttpServer()
 }
