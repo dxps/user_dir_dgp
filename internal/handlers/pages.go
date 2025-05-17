@@ -12,6 +12,13 @@ type HttpHandlers struct{}
 func (h *HttpHandlers) HomePageHandler(w http.ResponseWriter, r *http.Request) {
 
 	if err := pages.Page("Home").Render(r.Context(), w); err != nil {
-		slog.Error("Failed to render homepage", "error", err)
+		slog.Error("Failed to render home page", "error", err)
+	}
+}
+
+func (h *HttpHandlers) LoginPageHandler(w http.ResponseWriter, r *http.Request) {
+
+	if err := pages.Login().Render(r.Context(), w); err != nil {
+		slog.Error("Failed to render login page", "error", err)
 	}
 }

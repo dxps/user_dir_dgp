@@ -1,0 +1,40 @@
+package pages
+
+import "github.com/dxps/user_dir_dgp/internal/ui/comps"
+
+templ Login() {
+	@comps.Layout() {
+		<div class="bg-white rounded-md p-6 min-w-[350px]">
+			<div class="flex">
+				<p class="flex-grow text-lg font-medium px-2 text-center text-gray-400">Login</p>
+				<a
+					class="text-gray-400 text-xl hover:text-gray-900 hover:bg-gray-100 px-2 rounded-xl transition duration-200 cursor-pointer"
+					href="/"
+				>x</a>
+			</div>
+			<div class="mt-6 space-y-4 text-gray-600">
+				<p>Authenticate using your credentials.</p>
+				<div class="flex flex-col items-center my-8 space-y-4">
+					<input
+						name="username"
+						data-bind-username
+						class="px-3 py-1 rounded-lg outline-none border-1.5 focus:border-green-300 w-64"
+						placeholder="Username"
+						autofocus
+					/>
+					<input
+						name="password"
+						data-bind-password
+						type="password"
+						class="px-3 py-1 rounded-lg outline-none border-1.5 focus:border-green-300 w-64"
+						placeholder="Password"
+					/>
+					<button
+						data-on-click="@post('/api/login', {contentType: 'json', selector: '#loginForm'})"
+						class="bg-green-100 hover:bg-green-200 drop-shadow-sm px-4 py-1 rounded-md"
+					>Login</button>
+				</div>
+			</div>
+		</div>
+	}
+}

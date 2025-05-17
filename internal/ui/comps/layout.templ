@@ -18,7 +18,9 @@ templ Layout() {
 		<body>
 			<main class="flex flex-col min-h-screen bg-indigo-50">
 				@Navbar()
-				{ children... }
+				<div class="flex flex-col min-h-screen justify-center items-center drop-shadow-2xl">
+					{ children... }
+				</div>
 			</main>
 		</body>
 	</html>

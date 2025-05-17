@@ -87,6 +87,7 @@ func (app *App) router() http.Handler {
 
 	hh := handlers.HttpHandlers{}
 	mux.HandleFunc("GET /{$}", hh.HomePageHandler)
+	mux.HandleFunc("GET /login", hh.LoginPageHandler)
 
 	return app.sessionMgr.LoadAndSave(mux)
 }

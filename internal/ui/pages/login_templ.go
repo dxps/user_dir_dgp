@@ -10,7 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "github.com/dxps/user_dir_dgp/internal/ui/comps"
 
-func Page(title string) templ.Component {
+func Login() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,20 +43,7 @@ func Page(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<h1>User Directory</h1><h3>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(title)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/ui/pages/page.templ`, Line: 8, Col: 13}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</h3>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-white rounded-md p-6 min-w-[350px]\"><div class=\"flex\"><p class=\"flex-grow text-lg font-medium px-2 text-center text-gray-400\">Login</p><a class=\"text-gray-400 text-xl hover:text-gray-900 hover:bg-gray-100 px-2 rounded-xl transition duration-200 cursor-pointer\" href=\"/\">x</a></div><div class=\"mt-6 space-y-4 text-gray-600\"><p>Authenticate using your credentials.</p><div class=\"flex flex-col items-center my-8 space-y-4\"><input name=\"username\" data-bind-username class=\"px-3 py-1 rounded-lg outline-none border-1.5 focus:border-green-300 w-64\" placeholder=\"Username\" autofocus> <input name=\"password\" data-bind-password type=\"password\" class=\"px-3 py-1 rounded-lg outline-none border-1.5 focus:border-green-300 w-64\" placeholder=\"Password\"> <button data-on-click=\"@post(&#39;/api/login&#39;, {contentType: &#39;json&#39;, selector: &#39;#loginForm&#39;})\" class=\"bg-green-100 hover:bg-green-200 drop-shadow-sm px-4 py-1 rounded-md\">Login</button></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
