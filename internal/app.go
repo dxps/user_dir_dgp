@@ -89,8 +89,14 @@ func (app *App) router() http.Handler {
 	assetsHandler := http.FileServerFS(app.assetsFS)
 	r.Get("/assets/*", assetsHandler.ServeHTTP)
 
+	// Pages
 	r.Get("/", hh.HomePageHandler)
 	r.Get("/login", hh.LoginPageHandler)
+
+	// API
+	r.Route("/api", func(r chi.Router) {
+		r.Post("/login", hh.LoginHandler)
+	})
 
 	return app.sessionMgr.LoadAndSave(r)
 }
